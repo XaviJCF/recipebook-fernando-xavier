@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+    <head>
+        <title>
+           {% block title %} Recipe Book {% endblock %}
+        </title>
+    </head>
+
+    <h1>
+        Recipe Book
+    </h1>
+    <h2>
+        {{recipe.name}} Ingredients
+    </h2>
+    
+    <body>
+        <ul>
+            {% for ingredients in recipe.ingredients.all %}
+                <li>
+                    {{ingredients.ingredient.name}}
+                    <br>
+                    Amount: {{ingredients.quantity}} 
+                </li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

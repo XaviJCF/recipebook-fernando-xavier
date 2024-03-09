@@ -1,5 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+from .models import Recipe, Ingredient, RecipeIngredient
 
 # Create your views here.
 def recipes_list(request):
@@ -137,3 +140,13 @@ def recipe_2(request):
 }
 
     return render(request, 'ledger/ingredients.html', ctx)
+
+class RecipeList(ListView):
+    model = Recipe
+    context_object_name = 'recipes'
+    template_name = 'ledger/recipe_list.html'
+
+class RecipeDetail(DetailView):
+    model = Recipe
+    context_object_name = 'recipe'
+    template_name = 'ledger/recipe_detail.html'

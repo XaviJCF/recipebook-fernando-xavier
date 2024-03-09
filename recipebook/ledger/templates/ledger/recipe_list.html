@@ -11,16 +11,13 @@
         Recipe Book
     </h1>
     <h2>
-        {{name}} Ingredients
+        Recipes
     </h2>
-    
     <body>
         <ul>
-            {% for ingredient in ingredients %}
+            {% for recipe in recipes %}
                 <li>
-                    {{ingredient.name}}
-                    <br>
-                    Amount: {{ingredient.quantity}} 
+                    <a href = "{% url 'recipe' recipe.id %}">{{recipe.name}} </a>
                 </li>
             {% endfor %}
         </ul>
