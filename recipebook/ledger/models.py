@@ -2,6 +2,10 @@ from django.db import models
 from django.urls import reverse
 
 # Create your models here.
+
+
+
+
 class Ingredient(models.Model):
     name = models.CharField(max_length = 100, )
 
@@ -11,6 +15,9 @@ class Ingredient(models.Model):
 
 class Recipe(models.Model):
     name = models.CharField(max_length = 100)
+    author = models.CharField(max_length = 100, null = True, blank = True)
+    created_on = models.DateTimeField(null = False, auto_now_add = True)
+    update_on = models.DateTimeField(null = True, auto_now = True)
 
     def __str__(self):
         return self.name

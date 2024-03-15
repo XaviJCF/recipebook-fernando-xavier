@@ -7,13 +7,28 @@
         </title>
     </head>
 
+
+    {% if request.user.is_authenticated %}
+    <h4> Hello {{request.user.username}}</h4>
+    <form action = "{% url 'logout' %}" method = "POST">
+        {% csrf_token %}
+        <button type = "submit">LOG OUT</button>
+    </form>
+    {% else %}
+        <a href ="{% url 'login' %}">Please login first.</a>
+    {% endif %}
+
+
     <h1>
         Recipe Book
     </h1>
     <h2>
-        {{recipe.name}} Ingredients
+        {{recipe.name}} Details
     </h2>
-    
+    <h4>
+    by {{recipe.author}}
+    </h4>
+
     <body>
         <ul>
             {% for ingredients in recipe.ingredients.all %}
